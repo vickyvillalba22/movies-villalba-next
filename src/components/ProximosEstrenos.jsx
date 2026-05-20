@@ -14,7 +14,7 @@ const ProximosEstrenos = () => {
         async function getEstrenos(){
 
             const data = await fetchData(endpoint)
-            console.log(data.results);
+            //console.log(data.results);
             setEstrenos(data.results)
             
         }

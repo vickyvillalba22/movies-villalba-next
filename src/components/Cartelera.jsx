@@ -14,7 +14,7 @@ const Cartelera = () => {
         async function getCartelera(){
 
             const data = await fetchData(endpoint)
-            console.log(data.results);
+            //console.log(data.results);
             setCarteleras(data.results)
             
         }

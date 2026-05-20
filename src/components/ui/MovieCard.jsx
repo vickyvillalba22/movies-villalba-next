@@ -7,13 +7,14 @@ const MovieCard = ({id, title, image, releaseDate, puntuacion, endpoint}) => {
 
   return (
 
-    <div className="group relative h-[40vh] w-[45%] overflow-hidden rounded-2xl bg-zinc-900 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/40 sm:w-55 md:w-65">
+    <div className="group relative h-[45vh] w-55 shrink-0 overflow-hidden rounded-2xl bg-zinc-900 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/40">
 
-        <div className="relative aspect-2/3 overflow-hidden">
+        <div className="relative h-full w-full overflow-hidden">
 
             <Image
             src={`https://image.tmdb.org/t/p/w500${image}`}
             fill
+            sizes="260px"
             alt={title}
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             />

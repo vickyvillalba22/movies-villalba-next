@@ -14,7 +14,7 @@ const Populares = () => {
         async function getPopulares(){
 
             const data = await fetchData(endpoint)
-            console.log(data.results);
+            //console.log(data.results);
             setPopulares(data.results)
             
         }
