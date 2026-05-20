@@ -7,10 +7,9 @@ import ProximosEstrenos from '@/components/ProximosEstrenos'
 
 const HomeContainer = () => {
   return (
-    <div className='flex flex-col gap-5 items-center w-full'>
-        
-        HomeContainer
 
+    <div className='flex w-full flex-col gap-10 items-center'>
+            
         <Tendencias />
 
         <Populares />
@@ -20,6 +19,7 @@ const HomeContainer = () => {
         <Cartelera />
 
         <ProximosEstrenos />
+
 
     </div>
     

@@ -27,7 +27,7 @@ const Tendencias = () => {
 
   return (
 
-    <div className='w-[90%]'>
+    <div className='w-[95%]'>
         
     <h2 className='text-2xl'>Tendencias</h2>  
 

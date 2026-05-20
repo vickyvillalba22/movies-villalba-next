@@ -2,7 +2,12 @@ import HomeContainer from "@/containers/HomeContainer";
 import Image from "next/image";
 
 export default function Home() {
-  return (<main>
-    <HomeContainer />
-  </main>);
+  
+  return (    
+  
+    <main className="w-full">
+      <HomeContainer />
+    </main>
+    
+  );
 }

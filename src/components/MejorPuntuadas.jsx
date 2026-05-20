@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import fetchData from '@/utils/fetchData'
+import MovieCard from './ui/MovieCard'
 
 const MejorPuntuadas = () => {
 
@@ -26,14 +27,16 @@ const MejorPuntuadas = () => {
 
   return (
 
-    <div>
+    <div className='w-[95%]'>
         
     <h2 className='text-2xl'>Películas mejor puntuadas</h2>  
 
-    <div className='flex flex-wrap gap-1'>
+    <div className="flex gap-6 overflow-x-auto px-4 py-6 no-scrollbar snap-x snap-mandatory">
 
-        {puntuadas.map((puntuada, index)=>(
-            <p key={index}>{puntuada.title}</p>
+        {puntuadas.map((movie, index)=>(
+
+            <MovieCard key={index} id={movie.id} title={movie.title} image={movie.poster_path} releaseDate={movie.release_date} puntuacion={movie.vote_average} endpoint="/movie/" />
+            
         ))}
 
     </div>
