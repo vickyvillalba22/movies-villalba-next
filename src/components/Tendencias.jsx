@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import fetchData from '@/utils/fetchData'
+import MovieCard from './ui/MovieCard'
 
 const Tendencias = () => {
 
@@ -26,15 +27,19 @@ const Tendencias = () => {
 
   return (
 
-    <div>
+    <div className='w-[90%]'>
         
     <h2 className='text-2xl'>Tendencias</h2>  
 
-    <div className='flex flex-wrap gap-1'>
+    <div className='flex flex-wrap gap-8'>
 
-        {tendencias.map((tendencia, index)=>(
-            <p key={index}>{tendencia.title}</p>
+        {tendencias.map((movie, index)=>(
+
+            <MovieCard key={index} id={movie.id} title={movie.title} image={movie.poster_path} releaseDate={movie.release_date} puntuacion={movie.vote_average} endpoint="/movie/" />
+            
         ))}
+
+        <MovieCard />
 
     </div>
 
