@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import fetchData from '@/utils/fetchData'
+import Image from 'next/image'
 
 const DetailContainer = ({id}) => {
 
@@ -25,7 +26,14 @@ const DetailContainer = ({id}) => {
 
     return (
 
-        <div>{movie.title}</div>
+        <div>
+            
+            {movie.title}
+
+            <Image src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}  width={100} height={100} alt="movie" />
+        
+        
+        </div>
     )
 }
 
