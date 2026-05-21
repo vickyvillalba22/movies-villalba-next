@@ -35,7 +35,7 @@ const MejorPuntuadas = () => {
 
         {puntuadas.map((movie, index)=>(
 
-            <MovieCard key={index} id={movie.id} title={movie.title} image={movie.poster_path} releaseDate={movie.release_date} puntuacion={movie.vote_average} endpoint="/movie/" />
+            <MovieCard key={index} id={movie.id} title={movie.title} image={movie.poster_path} releaseDate={movie.release_date} puntuacion={movie.vote_average} endpoint="/detail/" />
             
         ))}
 
