@@ -4,6 +4,7 @@ import Populares from '@/components/Populares'
 import MejorPuntuadas from '@/components/MejorPuntuadas'
 import Cartelera from '@/components/Cartelera'
 import ProximosEstrenos from '@/components/ProximosEstrenos'
+import HeroSection from '@/components/HeroSection'
 
 const HomeContainer = () => {
 
@@ -13,6 +14,8 @@ const HomeContainer = () => {
   return (
 
     <div className='flex w-full flex-col gap-10 items-center'>
+
+        <HeroSection />
 
         <Tendencias />
 
