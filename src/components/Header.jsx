@@ -11,7 +11,7 @@ const Header = () => {
         <Icon icon="hugeicons:camera-video" className='text-3xl' />
 
         <div className='flex gap-6'>
-            <p>Películas</p>
+            <p>Movies</p>
             <p>Series</p>
         </div>
 

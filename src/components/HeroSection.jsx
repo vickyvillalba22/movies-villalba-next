@@ -6,15 +6,8 @@ const HeroSection = () => {
   return (
     <section className="relative flex h-[80vh] w-full items-center overflow-hidden bg-black px-6 text-white">
 
-        {/*background image*/}
+        {/*background*/}
         <div className="absolute inset-0">
-
-            <Image
-                src="/hero-bg.jpg"
-                fill
-                alt="Movies background"
-                className="object-cover opacity-40"
-            />
 
             {/*reflector gradient*/}
             <div className="absolute inset-0 bg-radial-[at_50%_30%] from-white/20 via-black/40 to-black" />
