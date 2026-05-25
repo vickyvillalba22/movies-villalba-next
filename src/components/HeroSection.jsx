@@ -1,6 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
 
 const HeroSection = () => {
   return (
@@ -18,7 +16,7 @@ const HeroSection = () => {
         </div>
 
         {/*content*/}
-        <div className="relative z-10 flex max-w-sm flex-col gap-5">
+        <div className="relative z-3 flex max-w-sm flex-col gap-5">
 
             <span className="w-fit rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.25em] text-zinc-300 backdrop-blur-md">
                 Streaming Platform
