@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 
-const MovieCard = ({id, title, image, releaseDate, puntuacion, endpoint}) => {
+const MovieCard = ({id, title, image, releaseDate, puntuacion, endpoint, type}) => {
 
   return (
 

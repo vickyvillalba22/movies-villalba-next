@@ -4,15 +4,15 @@ import React, { useEffect, useState } from 'react'
 import fetchData from '@/utils/fetchData'
 import Image from 'next/image'
 
-const DetailContainer = ({id}) => {
+const DetailContainer = ({id, type}) => {
 
-    const [movie, setMovie] = useState({})
+    const [movie, setMovie] = useState(null)
     
     useEffect(()=>{
 
         async function getMovie() {
 
-            const data = await fetchData(`/movie/${id}`)
+            const data = await fetchData(`/${type}/${id}`)
             console.log(data);
             
             setMovie(data)
@@ -24,14 +24,20 @@ const DetailContainer = ({id}) => {
 
     }, [id])
 
+    if (!movie) return <p>Cargando...</p>
+
     const datos = [
         {
             name: "Release",
-            value: movie.release_date
+            value: movie.release_date || movie.first_air_date
         },
-                    {
-            name: "Duration",
-            value: movie.runtime
+        {
+        name: type === 'movie'
+            ? "Duration"
+            : "Seasons",
+        value: type === 'movie'
+            ? movie.runtime
+            : movie.number_of_seasons
         },
         {
             name: "Language",
@@ -79,7 +85,7 @@ const DetailContainer = ({id}) => {
 
                 {/*title*/}
                 <h1 className="max-w-[90%] text-4xl font-bold leading-tight">
-                    {movie.title}
+                    {movie.title || movie.name}
                 </h1>
 
                 {/*genres*/}

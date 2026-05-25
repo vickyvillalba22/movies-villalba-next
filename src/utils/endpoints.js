@@ -1,5 +1,4 @@
-export const sections = [
-
+export const movies = [
     {
         title: "Trending",
         endpoint: "/trending/movie/day"
@@ -25,4 +24,16 @@ export const sections = [
         endpoint: "/movie/upcoming"
     },
 
+]
+
+export const series = [
+    {
+        title: "Popular series",
+        endpoint: "/tv/popular"
+    },
+
+    {
+        title: "Top rated series",
+        endpoint: "/tv/top_rated"
+    },
 ]

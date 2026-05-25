@@ -3,6 +3,7 @@ import "./globals.css";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { AppContextProvider } from "@/contexts/AppContext";
 
 const dmSans = DM_Sans({
   variable: "--font-sans",
@@ -22,11 +23,13 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full w-full overflow-x-hidden bg-black text-white">
 
-        <Header />
+        <AppContextProvider>
+          <Header />
+            {children}
+          <Footer />
+        </AppContextProvider>
 
-        {children}
 
-        <Footer />
         
       </body>
     </html>

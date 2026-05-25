@@ -1,10 +1,17 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 
 import HeroSection from '@/components/HeroSection'
 import SectionGallery from '@/components/SectionGallery'
-import { sections } from '@/utils/endpoints'
+import { movies, series } from '@/utils/endpoints'
+import { useAppContext } from '@/contexts/AppContext'
 
 const HomeContainer = () => {
+
+  const { mode } = useAppContext()
+
+  const currentSections = mode === 'movies' ? movies : series 
 
   return (
 
@@ -12,15 +19,17 @@ const HomeContainer = () => {
 
         <HeroSection />
 
-        {sections.map((section, index)=>(
+        {currentSections.map((section, index) => (
 
-          <SectionGallery 
-            key={index}
-            title={section.title}
-            endpoint={section.endpoint}
-          />
+            <SectionGallery
+                key={index}
+                title={section.title}
+                endpoint={section.endpoint}
+            />
 
         ))}
+
+
 
     </div>
     

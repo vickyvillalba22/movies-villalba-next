@@ -4,9 +4,15 @@ import React, { useEffect, useState } from 'react'
 import fetchData from '@/utils/fetchData'
 import MovieCard from './ui/MovieCard'
 
+import { useAppContext } from '@/contexts/AppContext'
+
 const SectionGallery = ({endpoint, title}) => {
 
     const [movies, setMovies] = useState([])
+
+    const { mode } = useAppContext()
+
+    const detailEndpoint = mode === 'movies' ? '/detail/movie/' : '/detail/tv/'
 
     useEffect(()=>{
 
@@ -23,6 +29,7 @@ const SectionGallery = ({endpoint, title}) => {
     }, [endpoint])
 
   return (
+
     <div className='w-[95%]'>
         
         <h2 className='text-2xl'>{title}</h2>  
@@ -31,7 +38,16 @@ const SectionGallery = ({endpoint, title}) => {
 
             {movies.map((movie, index)=>(
 
-                <MovieCard key={index} id={movie.id} title={movie.title} image={movie.poster_path} releaseDate={movie.release_date} puntuacion={movie.vote_average} endpoint="/detail/" />
+                <MovieCard 
+                    key={index} 
+                    id={movie.id} 
+                    title={movie.title || movie.name} 
+                    image={movie.poster_path} 
+                    releaseDate={movie.release_date || movie.first_air_date}
+                    puntuacion={movie.vote_average}
+                    endpoint={detailEndpoint}
+                    type={mode} 
+                />
                 
             ))}
 
