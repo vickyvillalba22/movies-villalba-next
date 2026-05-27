@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const HeroSection = () => {
   return (
@@ -7,28 +8,32 @@ const HeroSection = () => {
         {/*background*/}
         <div className="absolute inset-0">
 
-            {/*reflector gradient*/}
-            <div className="absolute inset-0 bg-radial-[at_50%_30%] from-white/20 via-black/40 to-black" />
-
-            {/*overlay*/}
-            <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black" />
+            <Image 
+                src="/imgs/hero_image.png"
+                fill
+                alt="reflector"
+                priority
+                quality={100}
+                sizes="100vw"
+                className="object-cover object-center scale-120 brightness-120"
+            />
 
         </div>
 
         {/*content*/}
-        <div className="relative z-3 flex max-w-sm flex-col gap-5">
+        <div className="relative z-3 flex w-[50%] flex-col gap-5 md:translate-x-90 md:w-[60%]">
 
-            <span className="w-fit rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.25em] text-zinc-300 backdrop-blur-md">
+            <span className="w-fit rounded-full border border-black/10 bg-black/40 px-4 py-2 text-xs uppercase tracking-[0.25em] text-white backdrop-blur-md">
                 Streaming Platform
             </span>
 
-            <h1 className="text-5xl font-black leading-none">
+            <h1 className="text-6xl leading-none text-black md:text-7xl">
                 Movies
                 <br />
                 & Series
             </h1>
 
-            <p className="max-w-xs text-sm leading-relaxed text-zinc-300">
+            <p className="max-w-xs text-sm leading-relaxed text-black">
                 All your favourite movies and series in one place.
                 Explore trending releases and timeless classics.
             </p>
