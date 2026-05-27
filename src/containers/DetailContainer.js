@@ -4,7 +4,12 @@ import React, { useEffect, useState } from 'react'
 import fetchData from '@/utils/fetchData'
 import Image from 'next/image'
 
+import Loader from '@/components/ui/Loader'
+import { useAppContext } from '@/contexts/AppContext'
+
 const DetailContainer = ({id, type}) => {
+
+    const { loading, setLoading } = useAppContext()
 
     const [movie, setMovie] = useState(null)
     
@@ -16,6 +21,7 @@ const DetailContainer = ({id, type}) => {
             console.log(data);
             
             setMovie(data)
+            setLoading(false)
             
         }
 
@@ -51,7 +57,11 @@ const DetailContainer = ({id, type}) => {
 
     return (
 
-        <div className="relative min-h-screen w-full overflow-hidden bg-black text-white">
+        <div>
+
+        {loading && <Loader />}
+        
+        {!loading && <section className="relative min-h-screen w-full overflow-hidden bg-black text-white">
 
         {/* background image */}
         <div className="absolute inset-0">
@@ -152,16 +162,16 @@ const DetailContainer = ({id, type}) => {
                             ))}
 
                         </div>
-
+                        </div>
                     </div>
-
                 </div>
-
             </div>
-
-        </div>
+        </section>
+    
+    }
 
     </div>
+           
     )
 }
 

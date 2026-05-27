@@ -8,7 +8,9 @@ const page = async ({params}) => {
     console.log(id);
 
   return (
-    <DetailContainer id={id} type={type} />
+
+      <DetailContainer id={id} type={type} />
+   
   )
 }
 

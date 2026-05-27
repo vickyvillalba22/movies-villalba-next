@@ -25,7 +25,7 @@ const MovieCard = ({id, title, image, releaseDate, puntuacion, endpoint, type}) 
 
             <Icon icon="mdi:star" className="text-yellow-400" />
 
-            <span>{puntuacion}</span>
+            <span>{puntuacion.toFixed(1)}</span>
 
             </div>
 

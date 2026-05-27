@@ -9,11 +9,10 @@ const HeroSection = () => {
         <div className="absolute inset-0">
 
             <Image 
-                src="/imgs/hero_image.png"
+                src="/imgs/hero_image2.png"
                 fill
                 alt="reflector"
                 priority
-                quality={100}
                 sizes="100vw"
                 className="object-cover object-center scale-120 brightness-120"
             />

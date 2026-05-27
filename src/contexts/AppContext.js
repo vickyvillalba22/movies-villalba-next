@@ -6,14 +6,15 @@ const AppContext = createContext()
 
 export const AppContextProvider = ({children})=>{
 
+    const [loading, setLoading] = useState(true)
     const [mode, setMode] = useState('movies')
-
-    //AGREGAR LOADING
 
     return (
         <AppContext.Provider value={{
             mode,
-            setMode
+            loading,
+            setMode,
+            setLoading
         }}>
             {children}
         </AppContext.Provider>
