@@ -1,36 +1,46 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import fetchData from '@/utils/fetchData'
+
 import Image from 'next/image'
+import { Icon } from '@iconify/react'
 
 import Loader from '@/components/ui/Loader'
+import ErrorMessage from '@/components/ui/ErrorMessage'
 import { useAppContext } from '@/contexts/AppContext'
 
 const DetailContainer = ({id, type}) => {
 
-    const { loading, setLoading } = useAppContext()
+    const { loading, setLoading, error, setError } = useAppContext()
 
     const [movie, setMovie] = useState(null)
+
+    const router = useRouter()
     
     useEffect(()=>{
 
         async function getMovie() {
 
-            const data = await fetchData(`/${type}/${id}`)
-            console.log(data);
-            
-            setMovie(data)
-            setLoading(false)
+            try {
+                const data = await fetchData(`/${type}/${id}`)
+                setMovie(data)
+            } catch (error) {
+                setError('Error loading details')
+            } finally {
+                setLoading(false)
+            }
             
         }
 
         getMovie()
         
-
     }, [id])
 
-    if (!movie) return <p>Cargando...</p>
+    if (error) return <ErrorMessage message={error} />
+    if (loading) return <Loader />
+    if (!movie) return <Loader />
 
     const datos = [
         {
@@ -56,24 +66,25 @@ const DetailContainer = ({id, type}) => {
     ]
 
     return (
-
-        <div>
-
-        {loading && <Loader />}
         
-        {!loading && <section className="relative min-h-screen w-full overflow-hidden bg-black text-white">
+        <section className="relative min-h-screen w-full overflow-hidden bg-black text-white">
+
+        <button
+            onClick={() => router.back()}
+            className="mb-6 w-fit text-sm text-zinc-400 transition-colors duration-300 hover:text-white absolute left-8 top-5 z-5"
+        >
+            <Icon icon='hugeicons:arrow-left-02' className='text-3xl' />
+        </button>
 
         {/* background image */}
         <div className="absolute inset-0">
 
             <Image
-                src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
                 fill
                 alt="fondo"
-                className="object-cover opacity-60"
+                className="object-cover opacity-20"
             />
-
-            <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-black/10 md:bg-black/40" />
 
         </div>
 
@@ -167,10 +178,6 @@ const DetailContainer = ({id, type}) => {
                 </div>
             </div>
         </section>
-    
-    }
-
-    </div>
            
     )
 }

@@ -11,13 +11,14 @@ export default async function fetchData (endpoint){
             `${API_URL}${endpoint}?api_key=${API_KEY}`
         )
 
-        console.log(response.data);
 
         return response.data
         
     } catch (error) {
 
         console.log("error en fetchData: ", error);
+
+        throw error
         
     }
 }

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import fetchData from '@/utils/fetchData'
 import MovieCard from './ui/MovieCard'
 import Loader from './ui/Loader'
+import ErrorMessage from './ui/ErrorMessage'
 
 import { useAppContext } from '@/contexts/AppContext'
 
@@ -11,7 +12,7 @@ const SectionGallery = ({endpoint, title}) => {
 
     const [movies, setMovies] = useState([])
 
-    const { mode, loading, setLoading } = useAppContext()
+    const { mode, loading, setLoading, error, setError } = useAppContext()
 
     const detailEndpoint = mode === 'movies' ? '/detail/movie/' : '/detail/tv/'
 
@@ -19,16 +20,23 @@ const SectionGallery = ({endpoint, title}) => {
 
         async function getMovies(){
 
-            const data = await fetchData(endpoint)
-            
-            setMovies(data.results)
-            setLoading(false)
+            try {
+                const data = await fetchData(endpoint)
+                setMovies(data.results)
+                setError(null)
+            } catch (error) {
+                setError('Error loading gallery')
+            } finally {
+                setLoading(false)
+            }
             
         }
 
         getMovies();
         
     }, [endpoint])
+
+    if (error) return <ErrorMessage message={error} />
 
   return (
 

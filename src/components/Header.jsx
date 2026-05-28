@@ -4,6 +4,7 @@ import React from 'react'
 import { Icon } from '@iconify/react'
 
 import { useAppContext } from '@/contexts/AppContext'
+import Link from 'next/link'
 
 const Header = () => {
 
@@ -15,13 +16,36 @@ const Header = () => {
 
       <div className='w-[90%] flex justify-between items-center'>
 
+        <Link href='/'>
           <Icon icon="hugeicons:camera-video" className='text-3xl' />
+        </Link>
+          
 
           <div className='flex gap-6'>
-              <button onClick={()=>setMode('movies')}>
+              <button 
+                onClick={()=>setMode('movies')}
+                className={`
+                  text-sm font-medium transition-all duration-300
+                  hover:text-zinc-300
+                  ${mode === 'movies'
+                      ? 'text-white underline underline-offset-8'
+                      : 'text-zinc-500'
+                  }
+              `}
+              >
                 Movies
               </button>
-              <button onClick={()=>setMode('series')}>
+              <button 
+                onClick={()=>setMode('series')}
+                className={`
+                  text-sm font-medium transition-all duration-300
+                  hover:text-zinc-300
+                  ${mode === 'series'
+                      ? 'text-white underline underline-offset-8'
+                      : 'text-zinc-500'
+                  }
+              `}
+              >
                 Series
               </button>
           </div>
